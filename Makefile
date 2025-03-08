@@ -1,3 +1,5 @@
+all: sequential parallel parallel_512
+
 sequential:
 	nvcc grid_4_4_seq.cu -o grid_4_4_seq.exe
 

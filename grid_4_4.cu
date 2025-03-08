@@ -86,6 +86,9 @@ int main(int argc, char **argv) {
     // Get the number of iterations from the command line
     int iterations = atoi(argv[1]);
 
+    // Print grid size
+    printf("Grid size: %d\n", N);
+
     cudaError_t cudaStatus;
     GpuTimer timer;
 

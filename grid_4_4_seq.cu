@@ -47,14 +47,7 @@ void simulate(int iterations, float* u) {
         u[idx(0,N-1,N-1)] = G * u[idx(0,N-1,N-2)];
 
         // Print the current state
-        printf("Iteration %d\n", iter+1);
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                printf("(%d,%d): %.6f ", i, j, u[idx(0,i,j)]);
-            }
-            printf("\n");
-        }
-        printf("\n");
+        printf("(%d,%d): %f\n", N/2, N/2, u[idx(0,N/2,N/2)]);
 
         // Shift the grids
         for (int i = 0; i < N; i++) {
@@ -76,6 +69,9 @@ int main(int argc, char **argv) {
     // Get the number of iterations from the command line
     int iterations = atoi(argv[1]);
 
+    // Print grid size
+    printf("Grid size: %d\n", N);
+
     CpuTimer timer;
 
     // Allocate memory for the grids
@@ -91,15 +87,6 @@ int main(int argc, char **argv) {
     timer.Start();
     simulate(iterations, u);
     timer.Stop();
-
-    // Print the final state
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            printf("(%d,%d): %.6f ", i, j, u[idx(0,i,j)]);
-        }
-        printf("\n");
-    }
-    printf("\n");
 
     // Print the elapsed time
     printf("Elapsed time: %f ms\n", timer.Elapsed());
